@@ -1,0 +1,128 @@
+/* Add this to your existing CSS file or create a new one */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* Optional: Style the modal */
+.modal-content {
+  border-radius: 5px;
+}
+
+/* Optional: Style the header */
+header {
+  background-color: #005b41;
+  color: #ffffff;
+}
+
+/* Optional: Style the navigation menu */
+.navbar-nav .nav-link {
+  color: #007bff;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #0056b3;
+}
+
+body {
+  padding: 18px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr.playfair {
+  background-color: #f0ecec;
+}
+
+td.playfair {
+  width: 25px;
+  height: 25px;
+}
+
+td.playfair:hover {
+  background-color: #fff;
+}
+
+button {
+  width: 130px;
+  height: 40px;
+}
+
+label {
+  font-weight: bold;
+}
+
+div.error {
+  background: rgb(182, 182, 167);
+  color: rgb(245, 11, 11);
+}
+
+header {
+  /* background-color: #f1f1f1; */
+  text-align: center;
+  font-weight: bold;
+  font-size: 18pt;
+  padding: 20px;
+}
+
+aside {
+  float: left;
+  width: 20%;
+  padding: 20px;
+}
+
+article {
+  float: left;
+  width: 21%;
+  padding: 20px;
+}
+
+section {
+  float: left;
+  width: 59%;
+  padding: 20px;
+}
+
+#header-page {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 20px;
+}
+
+#header-page-info{
+  font-size: 15pt;
+  font-weight: 400;
+}
