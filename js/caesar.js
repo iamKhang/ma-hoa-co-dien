@@ -56,41 +56,56 @@ function crypt(text, key, isDecrypt = false) {
   return result;
 }
 
+function decryptCaesar(cipherText, key) {
+  var codeKey;
+  if (!isNaN(key)) {
+    codeKey = 26 - parseInt(key);
+  } else {
+    codeKey = 26 - (key.charCodeAt() - 65);
+  }
+  var result = "";
+  for (let i = 0; i < cipherText.length; i++) {
+    var codeTxt = cipherText.charCodeAt(i);
+    if (codeTxt >= 65 && codeTxt <= 90) {
+      let resultCode = (codeTxt - 65 + codeKey) % 26;
+      result += String.fromCharCode(resultCode + 65);
+    } else if (codeTxt >= 97 && codeTxt <= 122) {
+      let resultCode = (codeTxt - 97 + codeKey) % 26;
+      result += String.fromCharCode(resultCode + 97);
+    } else {
+      result += cipherText.charAt(i);
+    }
+  }
+  return result;
+}
+
 function btnDecryptCaesar() {
   document.getElementById("resultBruteforceCaesar").innerHTML = "";
   var cipherText = document.getElementById("cipherTextCaesar").value;
   if (cipherText.length == 0) {
-    document.getElementById("errorMsgCaesar").innerHTML =
-      "Chưa nhập Cipher text kìa!";
-    return;
+      document.getElementById("errorMsgCaesar").innerHTML = 'Chưa nhập Cipher text kìa!';
+      return;
   }
   document.getElementById("cipherTextCaesar").value = cipherText;
-  var key = document.getElementById("keyCaesar").value.toUpperCase();
+  var key = document.getElementById("key").value.toUpperCase();
   if (key.length > 1) {
-    document.getElementById("errorMsgCaesar").innerHTML =
-      "Khóa K chỉ một ký tự thôi nhé";
-    return;
+      document.getElementById("errorMsg").innerHTML = 'Khóa K chỉ một ký tự thôi nhé';
+      return;
   } else if (key.length == 0) {
-    document.getElementById("plainTextCaesar").value = "";
-    var result =
-      "<b>Tổng hợp các trường hợp phá mã:</b><br/><table><tr><th><b>Key K</b></th><th><b>PlainText</b></th></tr>";
-    for (let i = 65; i <= 90; i++) {
-      result +=
-        "<tr><td>" +
-        String.fromCharCode(i) +
-        "</td><td>" +
-        crypt(cipherText, String.fromCharCode(i), true) +
-        "</td></tr>";
-    }
-    result += "</table>";
-    document.getElementById("resultBruteforceCaesar").innerHTML = result;
+      document.getElementById("plainText").value = "";
+      var result = "<b>Tổng hợp các trường hợp phá mã:</b><br/><table><tr><th><b>Key K</b></th><th><b>PlainText</b></th></tr>";
+      for (let i = 65; i <= 90; i++) {
+          result += "<tr><td>" + String.fromCharCode(i) + "</td><td>" + crypt(cipherText, String.fromCharCode(i), true) + "</td></tr>";
+      }
+      result += "</table>";
+      document.getElementById("resultBruteforce").innerHTML = result;
   } else {
-    document.getElementById("keyCaesar").value = key;
-    var plainText = crypt(cipherText, key, true);
-    document.getElementById("plainTextCaesar").value = plainText;
+      document.getElementById("key").value = key;
+      var plainText = decryptCaesar(cipherText, key);
+      document.getElementById("plainText").value = plainText;
   }
 
-  document.getElementById("errorMsgCaesar").innerHTML = "";
+  document.getElementById("errorMsg").innerHTML = "";
 }
 
 function isKeyValidCeaser(key) {
