@@ -622,3 +622,166 @@ td.playfair:hover {
 .round-step:nth-child(2) i { color: #f1c40f; }
 .round-step:nth-child(3) i { color: #2ecc71; }
 .round-step:nth-child(4) i { color: #3498db; }
+
+/* RSA Process Visualization */
+.rsa-process {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.rsa-keys {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.rsa-keys h5 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.key-info {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.key-item {
+  text-align: center;
+}
+
+.key-item .badge {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.key-item p {
+  font-family: "Courier New", monospace;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Màu sắc cho các bước RSA */
+.rsa-process .process-step:nth-child(1) .step-icon { color: #e74c3c; }
+.rsa-process .process-step:nth-child(3) .step-icon { color: #f1c40f; }
+.rsa-process .process-step:nth-child(5) .step-icon { color: #2ecc71; }
+.rsa-process .process-step:nth-child(7) .step-icon { color: #3498db; }
+
+/* RSA Example Styling */
+.rsa-example {
+  padding: 1rem;
+  background: var(--light-bg);
+  border-radius: 8px;
+}
+
+.example-step {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.example-step:last-child {
+  margin-bottom: 0;
+}
+
+.example-step h5 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-content {
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--accent-color);
+}
+
+.step-content p {
+  margin-bottom: 0.5rem;
+  font-family: "Courier New", monospace;
+}
+
+.note {
+  background: #fff3cd;
+  border-left: 4px solid var(--warning-color);
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9rem;
+}
+
+.note i {
+  color: var(--warning-color);
+  margin-right: 0.5rem;
+}
+
+.key-pair {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.key-box {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.key-box.public {
+  border-left: 4px solid var(--success-color);
+}
+
+.key-box.private {
+  border-left: 4px solid var(--danger-color);
+}
+
+.key-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.encryption-example {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.calculation {
+  font-family: "Courier New", monospace;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+  margin: 0.5rem 0 1rem 1rem;
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .step-content {
+    padding-left: 1rem;
+  }
+  
+  .key-pair {
+    gap: 1rem;
+  }
+  
+  .key-box {
+    min-width: 100%;
+  }
+}

@@ -11,6 +11,7 @@
 
     <script src="./js/playfair.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>
   </head>
   <body>
     <header id="header-page" class="text-white py-4">
@@ -78,6 +79,11 @@
             <li class="nav-item">
               <a class="nav-link" href="#" data-target="ma-hoa-aes">
                 <i class="fas fa-sync-alt"></i> AES
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-target="ma-hoa-rsa">
+                <i class="fas fa-key"></i> RSA
               </a>
             </li>
           </ul>
@@ -774,6 +780,204 @@
           </div>
         </div>
       </div>
+      <div id="ma-hoa-rsa" class="container content" style="display: none">
+        <div class="algorithm-explanation">
+          <h3 class="mb-4">Mã hóa RSA (Rivest-Shamir-Adleman)</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Giới thiệu</h4>
+                <p>RSA là thuật toán mã hóa bất đối xứng được sử dụng rộng rãi nhất hiện nay. Thuật toán sử dụng cặp khóa công khai và khóa riêng tư, dựa trên độ khó của bài toán phân tích số nguyên thành tích các số nguyên tố.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Đặc điểm</h4>
+                <ul>
+                  <li>Sử dụng cặp khóa công khai/riêng tư</li>
+                  <li>An toàn dựa trên bài toán phân tích số nguyên tố</li>
+                  <li>Tốc độ chậm hơn mã hóa đối xứng</li>
+                  <li>Thường dùng để trao đổi khóa và chữ ký số</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="explanation-card">
+                <h4>Quy trình mã hóa RSA</h4>
+                <div class="rsa-process">
+                  <div class="process-step">
+                    <div class="step-icon">
+                      <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="step-label">Tạo số nguyên tố p, q</div>
+                  </div>
+                  <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                  <div class="process-step">
+                    <div class="step-icon">
+                      <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="step-label">Tính n = p×q, φ(n)</div>
+                  </div>
+                  <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                  <div class="process-step">
+                    <div class="step-icon">
+                      <i class="fas fa-key"></i>
+                    </div>
+                    <div class="step-label">Chọn e, tính d</div>
+                  </div>
+                  <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                  <div class="process-step">
+                    <div class="step-icon">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="step-label">Tạo cặp khóa</div>
+                  </div>
+                </div>
+                
+                <div class="rsa-keys mt-4">
+                  <h5>Cặp khóa RSA:</h5>
+                  <div class="key-info">
+                    <div class="key-item">
+                      <span class="badge bg-success">Khóa công khai</span>
+                      <p>(e, n)</p>
+                    </div>
+                    <div class="key-item">
+                      <span class="badge bg-danger">Khóa riêng tư</span>
+                      <p>(d, n)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="explanation-card">
+                <h4>Ví dụ minh họa thuật toán RSA</h4>
+                <div class="rsa-example">
+                  <div class="example-step">
+                    <h5>1. Chọn hai số nguyên tố p và q</h5>
+                    <div class="step-content">
+                      <p>p = 17 và q = 11</p>
+                    </div>
+                  </div>
+
+                  <div class="example-step">
+                    <h5>2. Tính n và φ(n)</h5>
+                    <div class="step-content">
+                      <p>n = p × q = 17 × 11 = 187</p>
+                      <p>φ(n) = (p-1) × (q-1) = 16 × 10 = 160</p>
+                    </div>
+                  </div>
+
+                  <div class="example-step">
+                    <h5>3. Chọn e (số nguyên tố cùng nhau với φ(n))</h5>
+                    <div class="step-content">
+                      <p>e = 7 (vì GCD(7,160) = 1)</p>
+                      <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        e phải thỏa mãn: 1 < e < φ(n) và GCD(e,φ(n)) = 1
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="example-step">
+                    <h5>4. Tính d (nghịch đảo modulo của e theo modulo φ(n))</h5>
+                    <div class="step-content">
+                      <p>d × e ≡ 1 (mod φ(n))</p>
+                      <p>d × 7 ≡ 1 (mod 160)</p>
+                      <p>d = 23 (vì 23 × 7 = 161 ≡ 1 (mod 160))</p>
+                    </div>
+                  </div>
+
+                  <div class="example-step">
+                    <h5>5. Kết quả: Cặp khóa RSA</h5>
+                    <div class="step-content">
+                      <div class="key-pair">
+                        <div class="key-box public">
+                          <span class="key-label">Khóa công khai</span>
+                          <p>(e,n) = (7,187)</p>
+                        </div>
+                        <div class="key-box private">
+                          <span class="key-label">Khóa riêng tư</span>
+                          <p>(d,n) = (23,187)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="example-step">
+                    <h5>6. Ví dụ mã hóa và giải mã</h5>
+                    <div class="step-content">
+                      <div class="encryption-example">
+                        <p><strong>Giả sử muốn mã hóa số M = 88</strong></p>
+                        <ol>
+                          <li>
+                            <strong>Mã hóa:</strong> C = M<sup>e</sup> mod n
+                            <div class="calculation">
+                              C = 88<sup>7</sup> mod 187 = 11
+                            </div>
+                          </li>
+                          <li>
+                            <strong>Giải mã:</strong> M = C<sup>d</sup> mod n
+                            <div class="calculation">
+                              M = 11<sup>23</sup> mod 187 = 88
+                            </div>
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="algorithm-demo mt-5">
+          <h4>Demo thuật toán</h4>
+          <div class="form-group">
+            <button class="btn btn-info mb-3" onclick="generateRSAKeys()">
+              <i class="fas fa-sync"></i> Tạo cặp khóa mới
+            </button>
+          </div>
+          <div class="form-group">
+            <label>Khóa công khai:</label>
+            <textarea class="form-control" id="publicKeyRSA" rows="4" readonly></textarea>
+          </div>
+          <div class="form-group">
+            <label>Khóa riêng tư:</label>
+            <textarea class="form-control" id="privateKeyRSA" rows="4" readonly></textarea>
+          </div>
+          <div class="form-group">
+            <label>Plain text:</label>
+            <textarea class="form-control" id="plaintextRSA" placeholder="Nhập văn bản cần mã hóa..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Cipher text:</label>
+            <textarea class="form-control" id="ciphertextRSA" readonly></textarea>
+          </div>
+          <div id="errorMsgRSA" class="error"></div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary m-2" onclick="btnEncryptRSA()">
+              Encrypt
+            </button>
+            <button class="btn btn-success m-2" onclick="btnDecryptRSA()">
+              Decrypt
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./lib/bootstrap/bootstrap.min.js"></script>
@@ -786,6 +990,7 @@
     <script src="./js/generateKeyByRSA.js"></script>
     <script src="./js/bcrypt.js"></script>
     <script src="./js/aes.js"></script>
+    <script src="./js/rsa.js"></script>
     <script>
       $(document).ready(function() {
         // Ẩn tất cả các content
