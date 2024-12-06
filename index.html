@@ -7,60 +7,54 @@
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <script src="./js/playfair.js"></script>
   </head>
   <body>
-    <header id="header-page" class="text-white">
-      <h1 class="t">Project hiện thực các thuật toán mã hóa cổ điển</h1>
-      <h2 id="header-page-info" class="">
-        Môn học: Nhập môn an toàn thông tin
-      </h2>
-      <p id="header-page-info" class="">
-        Lê Hoàng Khang | Contact: iamhoangkhang@icloud.com
-      </p>
+    <header id="header-page" class="text-white py-4">
+      <div class="container">
+        <h1 class="display-4">Thuật toán mã hóa cổ điển</h1>
+        <p class="lead">Trực quan hóa các thuật toán mã hóa cơ bản</p>
+        <div class="header-info">
+          <p>Môn học: Nhập môn an toàn thông tin</p>
+          <p>Lê Hoàng Khang | <a href="mailto:iamhoangkhang@icloud.com" class="text-white">iamhoangkhang@icloud.com</a></p>
+        </div>
+      </div>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse w-75" id="navbarNav">
-        <ul class="navbar-nav">
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#" data-target="sinh-khoa-RSA"
-              >Sinh khóa RSA <span class="sr-only">(current)</span></a
-            >
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="ham-bam"
-              >Băm (MD5) <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="ma-hoa-caesar"
-              >Mã hóa Caesar</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="ma-hoa-playfair"
-              >Mã hóa Playfair</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="ma-hoa-vigerane"
-              >Mã hóa Vigerane</a
-            >
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-shield-alt"></i> 
+          Crypto Algorithms
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-target="ham-bam">
+                <i class="fas fa-hash"></i> MD5
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-target="ma-hoa-caesar">
+                <i class="fas fa-exchange-alt"></i> Caesar
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-target="ma-hoa-playfair">
+                <i class="fas fa-table"></i> Playfair
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-target="ma-hoa-vigerane">
+                <i class="fas fa-key"></i> Vigenère
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div>
@@ -164,219 +158,361 @@
       </div> -->
 
       <div id="ham-bam" class="container content" style="display: none">
-        <!-- Nội dung cho Hàm băm -->
-        <header class="mt-3 mb-3">Mã hóa băm bằng MD5</header>
-        <div class="form-group">
-          <label>Plain text - Chuỗi chưa mã hóa:</label>
-          <textarea class="form-control" id="plainTextMD5" cols="30"></textarea>
+        <div class="algorithm-explanation">
+          <h3 class="mb-4">Thuật toán băm MD5</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Giới thiệu</h4>
+                <p>MD5 (Message-Digest Algorithm 5) là một hàm băm mật mã học tạo ra giá trị hash 128-bit. Thuật toán này được sử dụng rộng rãi để kiểm tra tính toàn vẹn của dữ liệu và lưu trữ mật khẩu.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Đặc điểm</h4>
+                <ul>
+                  <li>Tạo ra một chuỗi hash 32 ký tự hex</li>
+                  <li>Một chiều - không thể giải mã ngược lại</li>
+                  <li>Cùng input luôn cho ra cùng output</li>
+                  <li>Thay đổi nhỏ ở input sẽ thay đổi lớn ở output</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Cipher text - Chuỗi sau khi mã hóa:</label>
-          <textarea
-            class="form-control"
-            id="cipherTextMD5"
-            cols="30"
-          ></textarea>
-        </div>
-        <div class="form-group d-flex justify-content-center">
-          <button
-            type="button"
-            class="btn-primary m-1"
-            onclick="btnEncryptMD5()"
-          >
-            Encrypt
-          </button>
+
+        <div class="algorithm-demo mt-5">
+          <h4>Demo thuật toán</h4>
+          <div class="form-group">
+            <label>Plain text - Chuỗi chưa mã hóa:</label>
+            <textarea class="form-control" id="plainTextMD5" cols="30"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Cipher text - Chuỗi sau khi mã hóa:</label>
+            <textarea
+              class="form-control"
+              id="cipherTextMD5"
+              cols="30"
+            ></textarea>
+          </div>
+          <div class="form-group d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn-primary m-1"
+              onclick="btnEncryptMD5()"
+            >
+              Encrypt
+            </button>
+          </div>
         </div>
       </div>
       <div id="ma-hoa-caesar" class="container content" style="display: none">
-        <!-- Nội dung cho Mã hóa Caesar -->
-        <header class="mt-3 mb-3">Mã hóa Caesar</header>
-        <div class="form-group">
-          <label for="plainTextCaesar">Plain text - Chuỗi chưa mã hóa:</label>
-          <textarea
-            class="form-control"
-            id="plainTextCaesar"
-            cols="30"
-          ></textarea>
+        <div class="algorithm-explanation">
+          <h3 class="mb-4">Mã hóa Caesar</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Nguyên lý hoạt động</h4>
+                <p>Mã Caesar là một loại mật mã thay thế, trong đó mỗi ký tự trong văn bản gốc được thay thế bằng một ký tự cách nó một khoảng xác định trong bảng chữ cái.</p>
+                <div class="caesar-visual">
+                  <div class="shift-example">
+                    <div class="shift-row">
+                      <span class="label">Original:</span>
+                      <div class="alphabet original">
+                        A B C D E F G H I J
+                      </div>
+                    </div>
+                    <div class="shift-arrow">↓ shift 3</div>
+                    <div class="shift-row">
+                      <span class="label">Shifted:</span>
+                      <div class="alphabet shifted">
+                        D E F G H I J K L M
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-text mt-3">
+                    <p class="mb-1">Example: <span class="text-primary">"HELLO"</span> → <span class="text-success">"KHOOR"</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Công thức</h4>
+                <div class="formula">
+                  <p>Mã hóa: E(x) = (x + k) mod 26</p>
+                  <p>Giải mã: D(x) = (x - k) mod 26</p>
+                  <p>Trong đó:</p>
+                  <ul>
+                    <li>x: vị trí của ký tự trong bảng chữ cái (A=0, B=1,...)</li>
+                    <li>k: khóa (số bước dịch chuyển)</li>
+                    <li>mod 26: phép chia lấy dư cho 26 (số ký tự trong bảng chữ cái)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="cipherTextCaesar"
-            >Cipher text - Chuỗi sau khi mã hóa:</label
-          >
-          <textarea
-            class="form-control"
-            id="cipherTextCaesar"
-            cols="30"
-          ></textarea>
+
+        <div class="algorithm-demo mt-5">
+          <h4>Demo thuật toán</h4>
+          <div class="form-group">
+            <label for="plainTextCaesar">Plain text - Chuỗi chưa mã hóa:</label>
+            <textarea
+              class="form-control"
+              id="plainTextCaesar"
+              cols="30"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="cipherTextCaesar"
+              >Cipher text - Chuỗi sau khi mã hóa:</label
+            >
+            <textarea
+              class="form-control"
+              id="cipherTextCaesar"
+              cols="30"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="keyCaesar">Key K:</label>
+            <input
+              title="Nhập một kí tự từ A-Z hoặc số từ 1-25"
+              type="text"
+              class="form-control"
+              id="keyCaesar"
+              size="1"
+              pattern="^[a-zA-Z0-9]{0,1}$"
+            />
+          </div>
+          <div id="errorMsgCaesar" class="error"></div>
+          <div class="mb-3 d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-success m-1"
+              onclick="btnEncryptCaesar()"
+            >
+              Encrypt
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary m-1"
+              onclick="btnDecryptCaesar()"
+            >
+              Decrypt
+            </button>
+          </div>
+          <section id="resultBruteforceCaesar"></section>
         </div>
-        <div class="form-group">
-          <label for="keyCaesar">Key K:</label>
-          <input
-            title="Nhập một kí tự từ A-Z hoặc số từ 1-25"
-            type="text"
-            class="form-control"
-            id="keyCaesar"
-            size="1"
-            pattern="^[a-zA-Z0-9]{0,1}$"
-          />
-        </div>
-        <div id="errorMsgCaesar" class="error"></div>
-        <div class="mb-3 d-flex justify-content-center">
-          <button
-            type="button"
-            class="btn btn-success m-1"
-            onclick="btnEncryptCaesar()"
-          >
-            Encrypt
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary m-1"
-            onclick="btnDecryptCaesar()"
-          >
-            Decrypt
-          </button>
-        </div>
-        <section id="resultBruteforceCaesar"></section>
       </div>
       <div id="ma-hoa-playfair" class="container content" style="display: none">
-        <!-- Nội dung cho Mã hóa Playfair -->
-        <header class="mt-3 mb-3">Mã hóa Playfair</header>
-        <div class="row">
-          <div class="col-4">
-            <label>Khóa K: </label>
-            <input
-              title="Nhập các kí tự từ A-Z"
-              type="text"
-              id="keyPlayfair"
-              pattern="^[a-zA-Z]+"
-              onkeyup="updateMatrixKey()"
-              class="form-control"
-            />
-            <label>Bảng mã Playfair (5x5)</label>
-            <table>
-              <tr class="playfair">
-                <td class="playfair" id="00"></td>
-                <td class="playfair" id="01"></td>
-                <td class="playfair" id="02"></td>
-                <td class="playfair" id="03"></td>
-                <td class="playfair" id="04"></td>
-              </tr>
-              <tr class="playfair">
-                <td class="playfair" id="10"></td>
-                <td class="playfair" id="11"></td>
-                <td class="playfair" id="12"></td>
-                <td class="playfair" id="13"></td>
-                <td class="playfair" id="14"></td>
-              </tr>
-              <tr class="playfair">
-                <td class="playfair" id="20"></td>
-                <td class="playfair" id="21"></td>
-                <td class="playfair" id="22"></td>
-                <td class="playfair" id="23"></td>
-                <td class="playfair" id="24"></td>
-              </tr>
-              <tr class="playfair">
-                <td class="playfair" id="30"></td>
-                <td class="playfair" id="31"></td>
-                <td class="playfair" id="32"></td>
-                <td class="playfair" id="33"></td>
-                <td class="playfair" id="34"></td>
-              </tr>
-              <tr class="playfair">
-                <td class="playfair" id="40"></td>
-                <td class="playfair" id="41"></td>
-                <td class="playfair" id="42"></td>
-                <td class="playfair" id="43"></td>
-                <td class="playfair" id="44"></td>
-              </tr>
-            </table>
+        <div class="algorithm-explanation">
+          <h3 class="mb-4">Mã hóa Playfair</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Nguyên lý hoạt động</h4>
+                <p>Playfair là một mật mã thay thế sử dụng ma trận 5x5 các chữ cái (I/J được gộp chung). Văn bản được chia thành các cặp chữ cái và mã hóa theo quy tắc:</p>
+                <ul>
+                  <li>Cùng hàng: thay bằng ký tự bên phải</li>
+                  <li>Cùng cột: thay bằng ký tự bên dưới</li>
+                  <li>Tạo hình chữ nhật: thay bằng ký tự ở góc còn lại</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Quy tắc tạo khóa</h4>
+                <ol>
+                  <li>Điền từ khóa vào ma trận (bỏ ký tự trùng)</li>
+                  <li>Điền các chữ cái còn lại theo thứ tự</li>
+                  <li>I và J được xem như nhau</li>
+                  <li>Thêm 'X' nếu cặp chữ giống nhau</li>
+                </ol>
+              </div>
+            </div>
           </div>
-          <div class="col-7 ml-2">
-            <div class="form-group">
-              <label>Plain text - Chuỗi chưa mã hóa:</label>
-              <textarea
-                id="plainTextPlayfair"
-                cols="30"
+        </div>
+
+        <div class="algorithm-demo mt-5">
+          <h4>Demo thuật toán</h4>
+          <div class="row">
+            <div class="col-4">
+              <label>Khóa K: </label>
+              <input
+                title="Nhập các kí tự từ A-Z"
+                type="text"
+                id="keyPlayfair"
+                pattern="^[a-zA-Z]+"
+                onkeyup="updateMatrixKey()"
                 class="form-control"
-              ></textarea>
+              />
+              <label>Bảng mã Playfair (5x5)</label>
+              <table>
+                <tr class="playfair">
+                  <td class="playfair" id="00"></td>
+                  <td class="playfair" id="01"></td>
+                  <td class="playfair" id="02"></td>
+                  <td class="playfair" id="03"></td>
+                  <td class="playfair" id="04"></td>
+                </tr>
+                <tr class="playfair">
+                  <td class="playfair" id="10"></td>
+                  <td class="playfair" id="11"></td>
+                  <td class="playfair" id="12"></td>
+                  <td class="playfair" id="13"></td>
+                  <td class="playfair" id="14"></td>
+                </tr>
+                <tr class="playfair">
+                  <td class="playfair" id="20"></td>
+                  <td class="playfair" id="21"></td>
+                  <td class="playfair" id="22"></td>
+                  <td class="playfair" id="23"></td>
+                  <td class="playfair" id="24"></td>
+                </tr>
+                <tr class="playfair">
+                  <td class="playfair" id="30"></td>
+                  <td class="playfair" id="31"></td>
+                  <td class="playfair" id="32"></td>
+                  <td class="playfair" id="33"></td>
+                  <td class="playfair" id="34"></td>
+                </tr>
+                <tr class="playfair">
+                  <td class="playfair" id="40"></td>
+                  <td class="playfair" id="41"></td>
+                  <td class="playfair" id="42"></td>
+                  <td class="playfair" id="43"></td>
+                  <td class="playfair" id="44"></td>
+                </tr>
+              </table>
             </div>
-            <div class="form-group">
-              <label>Cipher text - Chuỗi sau khi mã hóa: </label>
-              <textarea
-                id="cipherTextPlayfair"
-                cols="30"
-                class="form-control"
-              ></textarea>
-            </div>
-            <div id="errorMsgPlayfair" class="error"></div>
-            <div class="d-flex align-items-center justify-content-center">
-              <button
-                class="m-2 btn-primary"
-                type="button"
-                onclick="btnEncryptPlayfair()"
-              >
-                Encrypt
-              </button>
-              <button
-                class="m-2 btn-success"
-                type="button"
-                onclick="btnDecryptPlayfair()"
-              >
-                Decrypt
-              </button>
-            </div>
-            <div class="text-success">
-              <b>Lưu ý: </b>kí tự I tương đương kí tự J
+            <div class="col-7 ml-2">
+              <div class="form-group">
+                <label>Plain text - Chuỗi chưa mã hóa:</label>
+                <textarea
+                  id="plainTextPlayfair"
+                  cols="30"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Cipher text - Chuỗi sau khi mã hóa: </label>
+                <textarea
+                  id="cipherTextPlayfair"
+                  cols="30"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div id="errorMsgPlayfair" class="error"></div>
+              <div class="d-flex align-items-center justify-content-center">
+                <button
+                  class="m-2 btn-primary"
+                  type="button"
+                  onclick="btnEncryptPlayfair()"
+                >
+                  Encrypt
+                </button>
+                <button
+                  class="m-2 btn-success"
+                  type="button"
+                  onclick="btnDecryptPlayfair()"
+                >
+                  Decrypt
+                </button>
+              </div>
+              <div class="text-success">
+                <b>Lưu ý: </b>kí tự I tương đương kí tự J
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div id="ma-hoa-vigerane" class="container content" style="display: none">
-        <!-- Nội dung cho Mã hóa Vigerane -->
-        <header class="mt-3 mb-3">Mã hóa Vigenère</header>
-        <div class="form-group">
-          <label>Plain text - Chuỗi chưa mã hóa:</label>
-          <textarea
-            id="plainTextVigerane"
-            cols="30"
-            class="form-control"
-          ></textarea>
+        <div class="algorithm-explanation">
+          <h3 class="mb-4">Mã hóa Vigenère</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Nguyên lý hoạt động</h4>
+                <p>Vigenère là một hệ mật mã đa bảng chữ cái, sử dụng các phép dịch Caesar khác nhau dựa trên các chữ cái trong từ khóa.</p>
+                <div class="vigenere-visual">
+                  <table class="vigenere-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- JavaScript sẽ điền nội dung -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="explanation-card">
+                <h4>Công thức</h4>
+                <div class="formula">
+                  <p>Mã hóa: Ci = (Pi + Ki) mod 26</p>
+                  <p>Giải mã: Pi = (Ci - Ki) mod 26</p>
+                  <p>Trong đó:</p>
+                  <ul>
+                    <li>Ci: ký tự được mã hóa</li>
+                    <li>Pi: ký tự gốc</li>
+                    <li>Ki: ký tự khóa tương ứng</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Cipher text - Chuỗi sau khi mã hóa: </label>
-          <textarea
-            id="cipherTextVigerane"
-            cols="30"
-            class="form-control"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label>Key K: </label>
-          <input
-            title="Nhập các kí tự từ A-Z"
-            type="text"
-            id="keyVigerane"
-            pattern="^[a-zA-Z]+"
-            class="form-control"
-          />
-        </div>
-        <div id="errorMsgVigerane" class="error"></div>
-        <div class="d-flex justify-content-center">
-          <button
-            class="m-2 btn-primary"
-            type="button"
-            onclick="btnEncryptVigerane()"
-          >
-            Encrypt
-          </button>
-          <button
-            class="m-2 btn-success"
-            type="button"
-            onclick="btnDecryptVigerane()"
-          >
-            Decrypt
-          </button>
+
+        <div class="algorithm-demo mt-5">
+          <h4>Demo thuật toán</h4>
+          <div class="form-group">
+            <label>Plain text - Chuỗi chưa mã hóa:</label>
+            <textarea
+              id="plainTextVigerane"
+              cols="30"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label>Cipher text - Chuỗi sau khi mã hóa: </label>
+            <textarea
+              id="cipherTextVigerane"
+              cols="30"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label>Key K: </label>
+            <input
+              title="Nhập các kí tự từ A-Z"
+              type="text"
+              id="keyVigerane"
+              pattern="^[a-zA-Z]+"
+              class="form-control"
+            />
+          </div>
+          <div id="errorMsgVigerane" class="error"></div>
+          <div class="d-flex justify-content-center">
+            <button
+              class="m-2 btn-primary"
+              type="button"
+              onclick="btnEncryptVigerane()"
+            >
+              Encrypt
+            </button>
+            <button
+              class="m-2 btn-success"
+              type="button"
+              onclick="btnDecryptVigerane()"
+            >
+              Decrypt
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -390,20 +526,79 @@
     <script src="./js/hashMD5.js"></script>
     <script src="./js/generateKeyByRSA.js"></script>
     <script>
-      $(document).ready(function () {
-        // Ẩn tất cả các div ngoại trừ Hàm băm khi trang được tải
+      $(document).ready(function() {
+        // Ẩn tất cả các content
         $(".content").hide();
-        $("#ma-hoa-playfair").show();
-        $(".nav-link").click(function () {
-          // Ẩn tất cả các div khi click vào một nav item
+        
+        // Hiển thị tab đầu tiên
+        $("#ham-bam").show();
+        $(".nav-link[data-target='ham-bam']").addClass('active');
+        
+        // Xử lý click tab
+        $(".nav-link").click(function(e) {
+          e.preventDefault();
+          
+          // Remove active class
+          $(".nav-link").removeClass('active');
+          $(this).addClass('active');
+          
+          // Ẩn tất cả content
           $(".content").hide();
-          // Lấy data-target của nav item được click
+          
+          // Hiển thị content tương ứng
           var target = $(this).data("target");
-          // Hiển thị div tương ứng với data-target
-          $("#" + target).show();
+          $("#" + target).fadeIn();
         });
       });
-    
     </script>
+    <style>
+      .algorithm-explanation {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .explanation-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        height: 100%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+
+      .explanation-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .explanation-card ul {
+        padding-left: 1.2rem;
+      }
+
+      .explanation-card li {
+        margin-bottom: 0.5rem;
+      }
+
+      .formula {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+      }
+
+      .caesar-visual {
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .algorithm-demo {
+        background: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+    </style>
   </body>
 </html>

@@ -1,3 +1,37 @@
+// Thêm vào đầu file js/vigerene.js
+
+// Tạo bảng Vigenère khi trang được load
+document.addEventListener('DOMContentLoaded', function() {
+  createVigenereTable();
+});
+
+function createVigenereTable() {
+  const table = document.querySelector('.vigenere-table tbody');
+  if (!table) return;
+
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  
+  // Chỉ tạo 7 hàng đầu tiên
+  for (let i = 0; i < 7; i++) {
+    const row = document.createElement('tr');
+    
+    // Thêm chữ cái đầu hàng
+    const firstCell = document.createElement('td');
+    firstCell.textContent = alphabet[i];
+    row.appendChild(firstCell);
+    
+    // Thêm 7 ô trong mỗi hàng
+    for (let j = 0; j < 7; j++) {
+      const cell = document.createElement('td');
+      const shift = (i + j) % 26;
+      cell.textContent = alphabet[shift];
+      row.appendChild(cell);
+    }
+    
+    table.appendChild(row);
+  }
+}
+
 function cryptVigerane(text, key, isDecrypt = false) {
   var result = "";
   for (var i = 0; i < text.length; i++) {

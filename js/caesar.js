@@ -119,3 +119,34 @@ function isKeyValidCeaser(key) {
   }
   return true;
 }
+
+// Cập nhật Caesar shift khi thay đổi key
+document.addEventListener('DOMContentLoaded', function() {
+  const keyInput = document.getElementById('keyCaesar');
+  if (keyInput) {
+    keyInput.addEventListener('input', function() {
+      const key = this.value;
+      if (key.match(/^[0-9]+$/)) {
+        const shift = parseInt(key) % 26;
+        updateCaesarShift(shift);
+      } else if (key.match(/^[A-Za-z]$/)) {
+        const shift = key.toUpperCase().charCodeAt(0) - 65;
+        updateCaesarShift(shift);
+      }
+    });
+  }
+});
+
+function updateCaesarShift(shift) {
+  const alphabet = 'ABCDEFGHIJ';
+  const shiftedAlphabet = alphabet.slice(shift) + alphabet.slice(0, shift);
+  const shiftedElement = document.querySelector('.alphabet.shifted');
+  if (shiftedElement) {
+    shiftedElement.textContent = shiftedAlphabet.split('').join(' ');
+  }
+}
+
+// Khởi tạo với shift mặc định là 3
+document.addEventListener('DOMContentLoaded', function() {
+  updateCaesarShift(3);
+});
