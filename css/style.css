@@ -558,3 +558,67 @@ td.playfair:hover {
     gap: 0.5rem;
   }
 }
+
+/* AES Process Visualization */
+.aes-process {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.aes-rounds {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.aes-rounds h5 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.round-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.round-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  min-width: 120px;
+  transition: all 0.3s ease;
+}
+
+.round-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.round-step i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.round-step span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
+/* Màu sắc cho các bước */
+.round-step:nth-child(1) i { color: #e74c3c; }
+.round-step:nth-child(2) i { color: #f1c40f; }
+.round-step:nth-child(3) i { color: #2ecc71; }
+.round-step:nth-child(4) i { color: #3498db; }
